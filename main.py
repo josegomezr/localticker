@@ -6,6 +6,13 @@ from adlisting_ticker import AdListingTicker
 app = Flask(__name__)
 app.config.from_object('env')
 
+
+@app.errorhandler(404)
+def page_not_found(e):
+    return jsonify({
+      'error': 'not-found'
+    }), 404
+
 @app.route("/orderbook")
 def orderbook():
   bitven_url = 'https://bitven.com/assets/js/rates.js'

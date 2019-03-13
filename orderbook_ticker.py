@@ -12,7 +12,6 @@ class OrderBookTicker(BaseTicker):
 
   def compute(self):
     self.prepared_dataset = self.prepare()
-
     buys = self.get_sample(self.prepared_dataset['bids'], 10)
     sells = self.get_sample(self.prepared_dataset['asks'], 10)
 
@@ -27,7 +26,7 @@ class OrderBookTicker(BaseTicker):
 
   def _sort(self, dataset):
     dataset = map(lambda x: list(map(float, x)), dataset)
-    dataset = filter(lambda x: 2.5e6 < x[0] < 9e6, dataset)
+    dataset = filter(lambda x: 5e6 < x[0] < 12e6, dataset)
     result = sorted(dataset,
                     reverse=True, key=lambda x: x[1]
                     )

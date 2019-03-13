@@ -29,3 +29,6 @@ orderbook = {
 }
 ticker = AdListingTicker(orderbook, BTC_TO_USD_RATE, min=MIN_VES_THRESHOLD)
 adlist_result = ticker.compute()
+
+print(orderbook_result)
+print(adlist_result)

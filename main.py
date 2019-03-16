@@ -6,11 +6,28 @@ from adlisting_ticker import AdListingTicker
 app = Flask(__name__)
 app.config.from_object('env')
 
+def get_endpoints():
+    endpoints = {}
+    for rule in app.url_map.iter_rules():
+        options = {}
+
+        for arg in rule.arguments:
+            options[arg] = "[{0}]".format(arg)
+
+        methods = ','.join(rule.methods)
+        endpoints[rule.endpoint] = {
+                'endpoint': rule.endpoint,
+                'methods' : methods,
+                'url'     : str(rule)
+                }
+
+    return endpoints
 
 @app.errorhandler(404)
 def page_not_found(e):
     return jsonify({
-      'error': 'not-found'
+      'error': 'not-found',
+      'valid_endpoints': get_endpoints() 
     }), 404
 
 @app.route("/orderbook")

@@ -19,7 +19,7 @@ la que se desea que la aplicacion escuche. Sin embargo, se puede iniciar utiliza
 
 ```
     bash run.sh 0.0.0.0:80000
-    # También
+    # O en produccion
     gunicorn main:app -b $ADDRESS --log-file -
 ```
 

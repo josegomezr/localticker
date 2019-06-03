@@ -8,7 +8,7 @@ Para facilitar la instalación, se recomienda utilizar [virtualenv](https://virt
 
 ```
     python3 -m venv env
-    . env/bin/activate
+    source env/bin/activate
     pip install -r requirements.txt
 ```
 

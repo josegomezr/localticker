@@ -26,7 +26,6 @@ class OrderBookTicker(BaseTicker):
 
   def _sort(self, dataset):
     dataset = map(lambda x: list(map(float, x)), dataset)
-    dataset = filter(lambda x: 5e6 < x[0] < 12e6, dataset)
     result = sorted(dataset,
                     reverse=True, key=lambda x: x[1]
                     )
